@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+#import "NineScreenAViewController.h"
+
 @interface NineAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UIScrollView *bgScrollView;
 	//UIImageView *featureImage;
-	//UIButton *featureScreenAButton;
+	UIButton *episodesButton;
+	UIButton *blogsButton;
+	UIButton *socialButton;
+	NineScreenAViewController *episodesViewController;
+	
+	
 	UINavigationController *mainNavigationController;
 }
 
@@ -20,9 +27,12 @@
 @property (nonatomic, retain) IBOutlet UIScrollView	*bgScrollView;
 //@property (nonatomic, retain) IBOutlet UIImageView *featureImage;
 @property (nonatomic, retain) IBOutlet UINavigationController *mainNavigationController;
+@property (nonatomic, retain) NineScreenAViewController *episodesViewController;
 
 //@property (nonatomic, retain) IBAction UIButton *featureScreenAButton;
 
--(IBAction) featureScreenAPressed:(UIButton *)sender;
+-(IBAction) episodesScreenLoad:(UIButton *)sender;
+-(IBAction) blogsScreenLoad:(UIButton *)sender;
+-(IBAction) socialScreenLoad:(UIButton *)sender;
 
 @end

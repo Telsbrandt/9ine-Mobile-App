@@ -12,13 +12,37 @@
 
 @synthesize window;
 @synthesize bgScrollView;
+@synthesize episodesViewController;
 //@synthesize featureScreenAButton;
 
 
--(IBAction) featureScreenAPressed:(UIButton *)sender {
+-(NineScreenAViewController*) episodesViewController{
+if (episodesViewController ==nil) {
+	episodesViewController = [[NineScreenAViewController alloc] initWithNibName: @"NineScreenAViewController" bundle:nil];
+}
+
+	return episodesViewController;
+}
+
+
+-(IBAction) episodesScreenLoad:(UIButton *)sender{
 	
 	
 	
+	
+	NSLog(@"load episodes screen");
+	
+}
+
+
+-(IBAction) blogsScreenLoad:(UIButton *)sender {
+
+		NSLog(@"load blogs screen");
+}
+
+-(IBAction) socialScreenLoad:(UIButton *)sender{
+		NSLog(@"load social screen");
+
 }
 - (CGSize)contentSizeForBGScrollView {
     // We have to use the paging scroll view's bounds to calculate the contentSize, for the same reason outlined above.
@@ -54,18 +78,19 @@
 	
 	
 	//
-	//CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+	CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
 	
    // bgScrollView = [[UIScrollView alloc] initWithFrame:applicationFrame];
 	
 	bgScrollView.scrollEnabled = YES;
-	bgScrollView.showsVerticalScrollIndicator = NO;
-	bgScrollView.showsVerticalScrollIndicator = NO;
+	bgScrollView.showsVerticalScrollIndicator = YES;
+	bgScrollView.showsHorizontalScrollIndicator = YES;
+	bgScrollView.directionalLockEnabled = YES;
 	
 	//
 	
 	//bgScrollView.frame =CGRectMake(bgScrollView.bounds.origin.x, bgScrollView.bounds.origin.x, image.size.width, image.size.height);
-	//bgScrollView.frame = applicationFrame;
+	bgScrollView.frame = applicationFrame;
 	//bgScrollView.contentSize.height = image.size.height;
 	bgScrollView.contentSize = image.size;
 	
