@@ -56,7 +56,7 @@
 	//
 	//CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
 	
-    //bgScrollView = [[UIScrollView alloc] initWithFrame:applicationFrame];
+   // bgScrollView = [[UIScrollView alloc] initWithFrame:applicationFrame];
 	
 	bgScrollView.scrollEnabled = YES;
 	bgScrollView.showsVerticalScrollIndicator = NO;

@@ -12,9 +12,9 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="22"/>
 			<integer value="2"/>
 			<integer value="10"/>
+			<integer value="22"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -109,7 +109,7 @@
 					</object>
 					<object class="IBUIImageView" id="565265466">
 						<reference key="NSNextResponder" ref="564131682"/>
-						<int key="NSvFlags">-2147482350</int>
+						<int key="NSvFlags">1298</int>
 						<string key="NSFrameSize">{960, 480}</string>
 						<reference key="NSSuperview" ref="564131682"/>
 						<bool key="IBUIAutoresizesSubviews">NO</bool>
@@ -363,7 +363,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
 					<string>UIResponder</string>
-					<string>{{331, 500}, {960, 480}}</string>
+					<string>{{272, 192}, {960, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw+8AAA</bytes>
@@ -395,7 +395,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 						</object>
 					</object>
-					<string>{{490, 467}, {320, 480}}</string>
+					<string>{{689, 127}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{336, 190}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -446,14 +446,12 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>bgScrollView</string>
-							<string>featureImage</string>
 							<string>mainNavigationController</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIScrollView</string>
-							<string>UIImageView</string>
 							<string>UINavigationController</string>
 							<string>UIWindow</string>
 						</object>
@@ -463,7 +461,6 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>bgScrollView</string>
-							<string>featureImage</string>
 							<string>mainNavigationController</string>
 							<string>window</string>
 						</object>
@@ -472,10 +469,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">bgScrollView</string>
 								<string key="candidateClassName">UIScrollView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">featureImage</string>
-								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">mainNavigationController</string>
