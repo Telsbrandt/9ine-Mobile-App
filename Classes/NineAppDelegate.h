@@ -11,14 +11,14 @@
 @interface NineAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UIScrollView *bgScrollView;
-	UIImageView *featureImage;
+	//UIImageView *featureImage;
 	//UIButton *featureScreenAButton;
 	UINavigationController *mainNavigationController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIScrollView	*bgScrollView;
-@property (nonatomic, retain) IBOutlet UIImageView *featureImage;
+//@property (nonatomic, retain) IBOutlet UIImageView *featureImage;
 @property (nonatomic, retain) IBOutlet UINavigationController *mainNavigationController;
 
 //@property (nonatomic, retain) IBAction UIButton *featureScreenAButton;
