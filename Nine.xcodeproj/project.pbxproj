@@ -13,13 +13,16 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		CD523F681345F6FC00B0124E /* 9ine_320x45pts.png in Resources */ = {isa = PBXBuildFile; fileRef = CD523F671345F6FC00B0124E /* 9ine_320x45pts.png */; };
+		CD6953BD1345D3CB00CE271D /* RecentEpisodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6953BA1345D3CB00CE271D /* RecentEpisodeVC.xib */; };
+		CD6953BE1345D3CB00CE271D /* RecentEpisodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6953BC1345D3CB00CE271D /* RecentEpisodeVC.m */; };
+		CD6FF2931345CF1F0037C173 /* OverviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6FF2911345CF1F0037C173 /* OverviewVC.m */; };
+		CD6FF2941345CF1F0037C173 /* OverviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6FF2921345CF1F0037C173 /* OverviewVC.xib */; };
 		E325E6C0133ACB1300DA1963 /* 9ine_iphone_bg_extend.png in Resources */ = {isa = PBXBuildFile; fileRef = E325E6BF133ACB1300DA1963 /* 9ine_iphone_bg_extend.png */; };
 		E325E6C2133ACB1B00DA1963 /* 9ine_iphone_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E325E6C1133ACB1B00DA1963 /* 9ine_iphone_bg.png */; };
 		E3D43C941343D028006B8935 /* UISc1mainButtons.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D43C931343D028006B8935 /* UISc1mainButtons.png */; };
 		E3D43C9E1343D21C006B8935 /* latest_ep_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D43C9D1343D21C006B8935 /* latest_ep_icon.png */; };
 		E3D43CA61343D384006B8935 /* UISc1mainButtons_nopic.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D43CA51343D384006B8935 /* UISc1mainButtons_nopic.png */; };
-		E3D43CD81343DD3C006B8935 /* NineScreenAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D43CD61343DD3C006B8935 /* NineScreenAViewController.m */; };
-		E3D43CD91343DD3C006B8935 /* NineScreenAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3D43CD71343DD3C006B8935 /* NineScreenAViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,15 +36,19 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Nine_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nine_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Nine-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Nine-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		CD523F671345F6FC00B0124E /* 9ine_320x45pts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9ine_320x45pts.png; sourceTree = "<group>"; };
+		CD6953B81345D32600CE271D /* StaticVCs_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticVCs_Prefix.pch; path = Nine.xcodeproj/StaticVCs_Prefix.pch; sourceTree = "<group>"; };
+		CD6953BA1345D3CB00CE271D /* RecentEpisodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentEpisodeVC.xib; sourceTree = "<group>"; };
+		CD6953BB1345D3CB00CE271D /* RecentEpisodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentEpisodeVC.h; sourceTree = "<group>"; };
+		CD6953BC1345D3CB00CE271D /* RecentEpisodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentEpisodeVC.m; sourceTree = "<group>"; };
+		CD6FF2901345CF1F0037C173 /* OverviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewVC.h; sourceTree = "<group>"; };
+		CD6FF2911345CF1F0037C173 /* OverviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewVC.m; sourceTree = "<group>"; };
+		CD6FF2921345CF1F0037C173 /* OverviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewVC.xib; sourceTree = "<group>"; };
 		E325E6BF133ACB1300DA1963 /* 9ine_iphone_bg_extend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9ine_iphone_bg_extend.png; sourceTree = "<group>"; };
 		E325E6C1133ACB1B00DA1963 /* 9ine_iphone_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9ine_iphone_bg.png; sourceTree = "<group>"; };
-		E3D43BC51343A4BC006B8935 /* 9ine_320x45pts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9ine_320x45pts.png; sourceTree = "<group>"; };
 		E3D43C931343D028006B8935 /* UISc1mainButtons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISc1mainButtons.png; sourceTree = "<group>"; };
 		E3D43C9D1343D21C006B8935 /* latest_ep_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = latest_ep_icon.png; sourceTree = "<group>"; };
 		E3D43CA51343D384006B8935 /* UISc1mainButtons_nopic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISc1mainButtons_nopic.png; sourceTree = "<group>"; };
-		E3D43CD51343DD3C006B8935 /* NineScreenAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NineScreenAViewController.h; sourceTree = "<group>"; };
-		E3D43CD61343DD3C006B8935 /* NineScreenAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NineScreenAViewController.m; sourceTree = "<group>"; };
-		E3D43CD71343DD3C006B8935 /* NineScreenAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NineScreenAViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,14 +85,18 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				CD6953B81345D32600CE271D /* StaticVCs_Prefix.pch */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				E3D43CD51343DD3C006B8935 /* NineScreenAViewController.h */,
-				E3D43CD61343DD3C006B8935 /* NineScreenAViewController.m */,
-				E3D43CD71343DD3C006B8935 /* NineScreenAViewController.xib */,
+				CD6FF2901345CF1F0037C173 /* OverviewVC.h */,
+				CD6FF2911345CF1F0037C173 /* OverviewVC.m */,
+				CD6FF2921345CF1F0037C173 /* OverviewVC.xib */,
+				CD6953BA1345D3CB00CE271D /* RecentEpisodeVC.xib */,
+				CD6953BB1345D3CB00CE271D /* RecentEpisodeVC.h */,
+				CD6953BC1345D3CB00CE271D /* RecentEpisodeVC.m */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -102,10 +113,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD523F671345F6FC00B0124E /* 9ine_320x45pts.png */,
 				E3D43CA51343D384006B8935 /* UISc1mainButtons_nopic.png */,
 				E3D43C9D1343D21C006B8935 /* latest_ep_icon.png */,
 				E3D43C931343D028006B8935 /* UISc1mainButtons.png */,
-				E3D43BC51343A4BC006B8935 /* 9ine_320x45pts.png */,
 				E325E6C1133ACB1B00DA1963 /* 9ine_iphone_bg.png */,
 				E325E6BF133ACB1300DA1963 /* 9ine_iphone_bg_extend.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -179,7 +190,9 @@
 				E3D43C941343D028006B8935 /* UISc1mainButtons.png in Resources */,
 				E3D43C9E1343D21C006B8935 /* latest_ep_icon.png in Resources */,
 				E3D43CA61343D384006B8935 /* UISc1mainButtons_nopic.png in Resources */,
-				E3D43CD91343DD3C006B8935 /* NineScreenAViewController.xib in Resources */,
+				CD6FF2941345CF1F0037C173 /* OverviewVC.xib in Resources */,
+				CD6953BD1345D3CB00CE271D /* RecentEpisodeVC.xib in Resources */,
+				CD523F681345F6FC00B0124E /* 9ine_320x45pts.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +205,8 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* NineAppDelegate.m in Sources */,
-				E3D43CD81343DD3C006B8935 /* NineScreenAViewController.m in Sources */,
+				CD6FF2931345CF1F0037C173 /* OverviewVC.m in Sources */,
+				CD6953BE1345D3CB00CE271D /* RecentEpisodeVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

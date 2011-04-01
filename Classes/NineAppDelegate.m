@@ -11,45 +11,35 @@
 @implementation NineAppDelegate
 
 @synthesize window;
-@synthesize bgScrollView;
-@synthesize episodesViewController;
+@synthesize overviewVC;
+@synthesize recentEpisodeVC;
 //@synthesize featureScreenAButton;
 
 
--(NineScreenAViewController*) episodesViewController{
-if (episodesViewController ==nil) {
-	episodesViewController = [[NineScreenAViewController alloc] initWithNibName: @"NineScreenAViewController" bundle:nil];
+-(RecentEpisodeVC*) recentEpisodeVC {
+    if (recentEpisodeVC ==nil) {
+        recentEpisodeVC = [[RecentEpisodeVC alloc] initWithNibName: @"RecentEpisodeVC" bundle:nil];
+    }
+
+	return recentEpisodeVC;
 }
 
-	return episodesViewController;
+-(OverviewVC*) overviewVC {
+    if (overviewVC ==nil) {
+        overviewVC = [[OverviewVC alloc] initWithNibName: @"OverviewVC" bundle:nil];
+    }
+    
+	return overviewVC;
 }
 
 
--(IBAction) episodesScreenLoad:(UIButton *)sender{
-	
-	
-	
-	
-	NSLog(@"load episodes screen");
-	
-}
 
-
--(IBAction) blogsScreenLoad:(UIButton *)sender {
-
-		NSLog(@"load blogs screen");
-}
-
--(IBAction) socialScreenLoad:(UIButton *)sender{
-		NSLog(@"load social screen");
-
-}
-- (CGSize)contentSizeForBGScrollView {
+/*- (CGSize)contentSizeForBGScrollView {
     // We have to use the paging scroll view's bounds to calculate the contentSize, for the same reason outlined above.
     CGRect bounds = bgScrollView.bounds;
 	NSLog(@"bounds size width and height %f,%f",bounds.size.width, bounds.size.height);
     return CGSizeMake(bounds.size.width, bounds.size.height);
-}
+}*/
 
 
 
@@ -57,46 +47,8 @@ if (episodesViewController ==nil) {
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	UIImage *image = [UIImage imageNamed:@"9ine_320x45pts.png"];
-//	UIImage *image_old = [UIImage imageNamed:@"9ine_iphone_bg.png"];
-//	UIImageView *imageView  = [[UIImageView alloc] initWithImage:image];
-//	//get application frame;
-//	
-//	CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
-//	
-//	//put image ina scroll view;
-//	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:applicationFrame];
-//	scrollView.contentSize = image_old.size;
-//	scrollView.backgroundColor = [UIColor blackColor];
-//	scrollView.showsVerticalScrollIndicator = NO;
-//    scrollView.showsHorizontalScrollIndicator = NO;
-//	[scrollView addSubview:imageView];
-//	
-//	[window addSubview:scrollView];
-	
-	//[window addSubview:imageView];
-	
-	
-	//
-	CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
-	
-   // bgScrollView = [[UIScrollView alloc] initWithFrame:applicationFrame];
-	
-	bgScrollView.scrollEnabled = YES;
-	bgScrollView.showsVerticalScrollIndicator = YES;
-	bgScrollView.showsHorizontalScrollIndicator = YES;
-	bgScrollView.directionalLockEnabled = YES;
-	
-	//
-	
-	//bgScrollView.frame =CGRectMake(bgScrollView.bounds.origin.x, bgScrollView.bounds.origin.x, image.size.width, image.size.height);
-	bgScrollView.frame = applicationFrame;
-	//bgScrollView.contentSize.height = image.size.height;
-	bgScrollView.contentSize = image.size;
-	
-	
-	[window addSubview:bgScrollView];
-    
+
+	[self.window addSubview:self.overviewVC.view];
 	[self.window makeKeyAndVisible];
     
     return YES;
@@ -153,6 +105,9 @@ if (episodesViewController ==nil) {
 
 - (void)dealloc {
     [window release];
+    [overviewVC release];
+    [recentEpisodeVC release];
+    
     [super dealloc];
 }
 

@@ -6,10 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "NineScreenAViewController.h"
+#import "RecentEpisodeVC.h"
 
 
-@implementation NineScreenAViewController
+@implementation RecentEpisodeVC
 
 
 

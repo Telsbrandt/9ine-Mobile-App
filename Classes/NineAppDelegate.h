@@ -7,32 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "NineScreenAViewController.h"
+#import "StaticVCs_Prefix.pch"
 
 @interface NineAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-	UIScrollView *bgScrollView;
-	//UIImageView *featureImage;
-	UIButton *episodesButton;
-	UIButton *blogsButton;
-	UIButton *socialButton;
-	NineScreenAViewController *episodesViewController;
-	
-	
-	UINavigationController *mainNavigationController;
+
+	OverviewVC *overviewVC;
+    RecentEpisodeVC *recentEpisodeVC;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UIScrollView	*bgScrollView;
-//@property (nonatomic, retain) IBOutlet UIImageView *featureImage;
-@property (nonatomic, retain) IBOutlet UINavigationController *mainNavigationController;
-@property (nonatomic, retain) NineScreenAViewController *episodesViewController;
 
-//@property (nonatomic, retain) IBAction UIButton *featureScreenAButton;
+@property (nonatomic, retain) OverviewVC *overviewVC;
+@property (nonatomic, retain) RecentEpisodeVC *recentEpisodeVC;
 
--(IBAction) episodesScreenLoad:(UIButton *)sender;
--(IBAction) blogsScreenLoad:(UIButton *)sender;
--(IBAction) socialScreenLoad:(UIButton *)sender;
 
 @end
