@@ -94,9 +94,9 @@
 				CD6FF2901345CF1F0037C173 /* OverviewVC.h */,
 				CD6FF2911345CF1F0037C173 /* OverviewVC.m */,
 				CD6FF2921345CF1F0037C173 /* OverviewVC.xib */,
-				CD6953BA1345D3CB00CE271D /* RecentEpisodeVC.xib */,
 				CD6953BB1345D3CB00CE271D /* RecentEpisodeVC.h */,
 				CD6953BC1345D3CB00CE271D /* RecentEpisodeVC.m */,
+				CD6953BA1345D3CB00CE271D /* RecentEpisodeVC.xib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";

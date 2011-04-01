@@ -7,25 +7,37 @@
 //
 
 #import "RecentEpisodeVC.h"
+#import "NineAppDelegate.h" 
 
 
 @implementation RecentEpisodeVC
 
+@synthesize tableView;
 
+-(IBAction) switchToOverview {
+    NineAppDelegate* del = [[UIApplication sharedApplication] delegate];
+    [UIView transitionFromView: self.view 
+                        toView: del.overviewVC.view 
+                      duration: 0.5 
+                       options: UIViewAnimationTransitionFlipFromLeft 
+                    completion: NULL];
+}
 
 static NSUInteger KNumberofRows = 3;
 static NSUInteger KNumberofSections = 1;
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-*/
+
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,7 +88,7 @@ static NSUInteger KNumberofSections = 1;
     
     static NSString *CellIdentifier = @"Features";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
@@ -159,6 +171,7 @@ static NSUInteger KNumberofSections = 1;
 
 
 - (void)dealloc {
+    self.tableView = nil;
     [super dealloc];
 }
 

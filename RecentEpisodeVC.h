@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface RecentEpisodeVC : UITableViewController {
+@interface RecentEpisodeVC : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 
 }
+
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
+
+-(IBAction) switchToOverview;
 
 @end
