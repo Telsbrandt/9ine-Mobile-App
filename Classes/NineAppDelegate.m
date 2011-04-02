@@ -13,7 +13,54 @@
 @synthesize window;
 @synthesize overviewVC;
 @synthesize recentEpisodeVC;
-//@synthesize featureScreenAButton;
+
+@synthesize ghettoGlobals;
+
+
+#pragma mark -
+#pragma mark State Transition Methods
+-(void) fadeFromView:(UIView*)fromView toView:(UIView*)toView
+{
+    toView.alpha = 0.0f;
+    [window addSubview:toView];
+    
+    float animationDuration = 0.5f;
+    [UIView beginAnimations: nil context:NULL];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:animationDuration];
+    
+    toView.alpha = 1.0f;
+    [UIView commitAnimations];
+    
+    NSMethodSignature * mySignature = 
+    [UIView methodSignatureForSelector:
+     @selector(transitionFromView:toView:duration:options:completion:)];
+    NSInvocation * myInvocation = 
+    [NSInvocation invocationWithMethodSignature:mySignature];
+    
+    NSNumber * zero = [NSNumber numberWithFloat:0.0f];
+    UIViewAnimationOptions options = UIViewAnimationTransitionNone;
+    
+    [myInvocation setTarget:[UIView class]];
+    [myInvocation setSelector:@selector(transitionFromView:toView:duration:options:completion:)];
+    [myInvocation setArgument:&fromView atIndex:2];
+    [myInvocation setArgument:&toView atIndex:3];
+    [myInvocation setArgument:&zero atIndex:4];
+    [myInvocation setArgument:&options atIndex:5];
+    
+    [myInvocation performSelector:@selector(invoke) withObject:nil afterDelay:animationDuration];
+    
+    
+    //toVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    //[self presentModalViewController:toVC animated:YES];
+    
+    
+    /*[UIView transitionFromView: self.view
+     toView: toVC.view
+     duration: 0.0 
+     options: UIViewAnimationTransitionNone
+     completion: NULL];*/
+}
 
 
 -(RecentEpisodeVC*) recentEpisodeVC {
@@ -28,11 +75,17 @@
     if (overviewVC ==nil) {
         overviewVC = [[OverviewVC alloc] initWithNibName: @"OverviewVC" bundle:nil];
     }
-    
+
 	return overviewVC;
 }
 
-
+-(NSMutableDictionary*) ghettoGlobals {
+    if (ghettoGlobals ==nil) {
+        ghettoGlobals = [[NSMutableDictionary alloc] init];
+    }
+    
+	return ghettoGlobals;
+}
 
 /*- (CGSize)contentSizeForBGScrollView {
     // We have to use the paging scroll view's bounds to calculate the contentSize, for the same reason outlined above.
@@ -107,6 +160,8 @@
     [window release];
     [overviewVC release];
     [recentEpisodeVC release];
+    
+    [ghettoGlobals release];
     
     [super dealloc];
 }

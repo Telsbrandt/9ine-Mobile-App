@@ -169,17 +169,15 @@ static NSUInteger KNumberofSections = 1;
     // For example: self.myOutlet = nil;
 }
 
-#pragma mark - Memory Management
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        //self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     }
     return self;
 }
-
 
 - (void)dealloc {
     self.tableView = nil;

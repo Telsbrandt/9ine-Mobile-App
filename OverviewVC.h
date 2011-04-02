@@ -15,6 +15,9 @@
     IBOutlet UIView *recentEpisodeMiniView;
     IBOutlet UIView *blogMiniView;
     IBOutlet UIView *socialMiniView;
+    
+    CGPoint lastSubviewCenter;
+    CGPoint lastContentOffset;
 }
 
 

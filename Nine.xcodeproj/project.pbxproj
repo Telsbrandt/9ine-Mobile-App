@@ -18,6 +18,7 @@
 		CD6953BE1345D3CB00CE271D /* RecentEpisodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6953BC1345D3CB00CE271D /* RecentEpisodeVC.m */; };
 		CD6FF2931345CF1F0037C173 /* OverviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6FF2911345CF1F0037C173 /* OverviewVC.m */; };
 		CD6FF2941345CF1F0037C173 /* OverviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6FF2921345CF1F0037C173 /* OverviewVC.xib */; };
+		CD9F1D5E134716C100EE2688 /* episode_image_placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = CD9F1D5D134716C100EE2688 /* episode_image_placeholder.gif */; };
 		CDF5256F1346B15F00EAA598 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF5256E1346B15F00EAA598 /* QuartzCore.framework */; };
 		E325E6C0133ACB1300DA1963 /* 9ine_iphone_bg_extend.png in Resources */ = {isa = PBXBuildFile; fileRef = E325E6BF133ACB1300DA1963 /* 9ine_iphone_bg_extend.png */; };
 		E325E6C2133ACB1B00DA1963 /* 9ine_iphone_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E325E6C1133ACB1B00DA1963 /* 9ine_iphone_bg.png */; };
@@ -45,6 +46,7 @@
 		CD6FF2901345CF1F0037C173 /* OverviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewVC.h; sourceTree = "<group>"; };
 		CD6FF2911345CF1F0037C173 /* OverviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewVC.m; sourceTree = "<group>"; };
 		CD6FF2921345CF1F0037C173 /* OverviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewVC.xib; sourceTree = "<group>"; };
+		CD9F1D5D134716C100EE2688 /* episode_image_placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = episode_image_placeholder.gif; sourceTree = "<group>"; };
 		CDF5256E1346B15F00EAA598 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E325E6BF133ACB1300DA1963 /* 9ine_iphone_bg_extend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9ine_iphone_bg_extend.png; sourceTree = "<group>"; };
 		E325E6C1133ACB1B00DA1963 /* 9ine_iphone_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9ine_iphone_bg.png; sourceTree = "<group>"; };
@@ -98,9 +100,9 @@
 				CD6FF2901345CF1F0037C173 /* OverviewVC.h */,
 				CD6FF2911345CF1F0037C173 /* OverviewVC.m */,
 				CD6FF2921345CF1F0037C173 /* OverviewVC.xib */,
-				CD6953BB1345D3CB00CE271D /* RecentEpisodeVC.h */,
-				CD6953BC1345D3CB00CE271D /* RecentEpisodeVC.m */,
-				CD6953BA1345D3CB00CE271D /* RecentEpisodeVC.xib */,
+				CD9F1D881347376500EE2688 /* VC Headers */,
+				CD9F1D861347373300EE2688 /* VC Implementations */,
+				CD9F1D891347377100EE2688 /* VC nibs */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -117,6 +119,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD9F1D5D134716C100EE2688 /* episode_image_placeholder.gif */,
 				CD523F671345F6FC00B0124E /* 9ine_320x45pts.png */,
 				E3D43CA51343D384006B8935 /* UISc1mainButtons_nopic.png */,
 				E3D43C9D1343D21C006B8935 /* latest_ep_icon.png */,
@@ -137,6 +140,30 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD9F1D861347373300EE2688 /* VC Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				CD6953BC1345D3CB00CE271D /* RecentEpisodeVC.m */,
+			);
+			name = "VC Implementations";
+			sourceTree = "<group>";
+		};
+		CD9F1D881347376500EE2688 /* VC Headers */ = {
+			isa = PBXGroup;
+			children = (
+				CD6953BB1345D3CB00CE271D /* RecentEpisodeVC.h */,
+			);
+			name = "VC Headers";
+			sourceTree = "<group>";
+		};
+		CD9F1D891347377100EE2688 /* VC nibs */ = {
+			isa = PBXGroup;
+			children = (
+				CD6953BA1345D3CB00CE271D /* RecentEpisodeVC.xib */,
+			);
+			name = "VC nibs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +224,7 @@
 				CD6FF2941345CF1F0037C173 /* OverviewVC.xib in Resources */,
 				CD6953BD1345D3CB00CE271D /* RecentEpisodeVC.xib in Resources */,
 				CD523F681345F6FC00B0124E /* 9ine_320x45pts.png in Resources */,
+				CD9F1D5E134716C100EE2688 /* episode_image_placeholder.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

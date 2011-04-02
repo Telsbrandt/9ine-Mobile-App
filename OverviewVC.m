@@ -19,68 +19,51 @@
 @synthesize socialMiniView;
 
 
-#pragma mark - Transition Methods
--(void) scaleUpSubview:(UIView *)subview fadeToView:(UIView *)newView 
+#pragma mark - 
+#pragma mark Transition Methods
+-(void) scaleUpSubview:(UIView *)subview fadeToView:(UIView *)toView 
 {
+    NineAppDelegate* del = [[UIApplication sharedApplication] delegate];
+    NSMutableDictionary* gGlobs = del.ghettoGlobals;
+    
     float animationDuration = 0.5f;
-    //recentEpisodeMiniView.frame = CGRectMake(0.0f, 0.0f, 200.0f, 150.0f);
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:animationDuration];
-    //recentEpisodeMiniView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
     
-    CAKeyframeAnimation *moveToCenterAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-	
-	//CGFloat animationDuration = 0.5f;
-    
-	
-	CGMutablePathRef thePath = CGPathCreateMutable();
-	
-	CGFloat midX = self.view.center.x;
-	CGFloat midY = self.view.center.y;
-	
-	
-	// Start the path at the placard's current location
-	CGPathMoveToPoint(thePath, NULL, recentEpisodeMiniView.center.x, recentEpisodeMiniView.center.y);
-	CGPathAddLineToPoint(thePath, NULL, midX, midY);
-    
-    moveToCenterAnim.path = thePath;
-    
-	
-	CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-	transformAnimation.removedOnCompletion = YES;
-	transformAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    
-    recentEpisodeMiniView.center = self.view.center;
-	recentEpisodeMiniView.transform = CGAffineTransformIdentity;
+    NSNumber* savedCenterX = [NSNumber numberWithFloat:subview.center.x];
+    NSNumber* savedCenterY = [NSNumber numberWithFloat:subview.center.y];
     
     
-    float widthScale = (1.0 / recentEpisodeMiniView.frame.size.width) * self.view.frame.size.width;
-    float heightScale = (1.0 / recentEpisodeMiniView.frame.size.height) * self.view.frame.size.height;
+    [gGlobs setObject:savedCenterX forKey:@"OverviewSubviewSavedCenterX"];
+    [gGlobs setObject:savedCenterY forKey:@"OverviewSubviewSavedCenterY"];
+    
+    subview.center = CGPointMake(bgScrollView.contentOffset.x + (self.view.frame.size.width / 2), (bgScrollView.contentSize.height / 2));
+    
+    
+	subview.transform = CGAffineTransformIdentity;
+    
+    float widthScale = (1.0 / subview.frame.size.width) * self.view.frame.size.width;
+    float heightScale = (1.0 / subview.frame.size.height) * self.view.frame.size.height;
     
     CGAffineTransform subToSuperScale = CGAffineTransformMakeScale(widthScale, heightScale);
-    recentEpisodeMiniView.transform = subToSuperScale;
-    
-    
+    subview.transform = subToSuperScale;
+
     [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
     [UIView commitAnimations];
-    
-    CGPathRelease(thePath);
-    
-    //[UIView setAnimationDidStopSelector:@selector(transitionToView: newView)];
-    [self performSelector: @selector(transitionToView:)
-               withObject: newView
-               afterDelay: animationDuration];
 
-}
 
--(void) transitionToView: (UIView *)toView
-{
-    [UIView transitionFromView: self.view 
-                        toView: toView 
-                      duration: 0.5 
-                       options: UIViewAnimationTransitionNone
-                    completion: NULL];
+    UIView * selfView = self.view;
+    NSMethodSignature * mySignature = [NineAppDelegate 
+                                       instanceMethodSignatureForSelector:@selector(fadeFromView:toView:)];
+    NSInvocation * myInvocation = [NSInvocation
+                                   invocationWithMethodSignature:mySignature];
+    [myInvocation setTarget:del];
+    [myInvocation setSelector:@selector(fadeFromView:toView:)];
+    [myInvocation setArgument:&selfView atIndex:2];
+    [myInvocation setArgument:&toView atIndex:3];
+
+    [myInvocation performSelector:@selector(invoke) withObject:nil afterDelay:animationDuration];
 }
 
 -(IBAction) switchToRecentEpisodeView 
@@ -107,14 +90,13 @@
                     completion: NULL];
 }
 
-
-
 - (CGSize)contentSizeForBGScrollView {
     // We have to use the paging scroll view's bounds to calculate the contentSize, for the same reason outlined above.
     CGRect bounds = bgScrollView.bounds;
     NSLog(@"bounds size width and height %f,%f",bounds.size.width, bounds.size.height);
     return CGSizeMake(bounds.size.width, bounds.size.height);
 }
+
 
 #pragma mark - Memory Management
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -129,7 +111,11 @@
 
 - (void)dealloc
 {
+    [bgScrollView release];
     
+    [recentEpisodeMiniView release];
+    [blogMiniView release];
+    [socialMiniView release];
     [super dealloc];
 }
 
@@ -149,8 +135,6 @@
 
 - (void)viewDidLoad
 {
-    //self.bgScrollView.delegate = self;
-    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
@@ -191,7 +175,19 @@
 	bgScrollView.frame = applicationFrame;
 	//bgScrollView.contentSize.height = image.size.height;
 	bgScrollView.contentSize = image.size;
+    
+    NineAppDelegate* del = [[UIApplication sharedApplication] delegate];
+    NSMutableDictionary* gGlobs = del.ghettoGlobals;
+    
+    [gGlobs setValue:YES forKey:@"OverviewVCHasLoaded"];
+    
+    
+    
+    bgScrollView.contentOffset = CGPointMake((bgScrollView.contentSize.width / 2) - (self.view.frame.size.width / 2), 0);
+    
     [self.view addSubview: bgScrollView];
+    
+    
 }
 
 - (void)viewDidUnload

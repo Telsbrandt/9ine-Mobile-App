@@ -9,17 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "StaticVCs_Prefix.pch"
 
+
 @interface NineAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 
 	OverviewVC *overviewVC;
     RecentEpisodeVC *recentEpisodeVC;
+    
+    // Anonymous intra-session pervasive state data
+    NSMutableDictionary* ghettoGlobals;
 }
+
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) OverviewVC *overviewVC;
 @property (nonatomic, retain) RecentEpisodeVC *recentEpisodeVC;
+
+@property (nonatomic, retain) NSMutableDictionary *ghettoGlobals;
+
+
+-(void) fadeFromView:(UIView*)fromView toView:(UIView*)toView;
 
 
 @end
