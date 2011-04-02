@@ -18,6 +18,7 @@
 		CD6953BE1345D3CB00CE271D /* RecentEpisodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6953BC1345D3CB00CE271D /* RecentEpisodeVC.m */; };
 		CD6FF2931345CF1F0037C173 /* OverviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6FF2911345CF1F0037C173 /* OverviewVC.m */; };
 		CD6FF2941345CF1F0037C173 /* OverviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6FF2921345CF1F0037C173 /* OverviewVC.xib */; };
+		CDF5256F1346B15F00EAA598 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF5256E1346B15F00EAA598 /* QuartzCore.framework */; };
 		E325E6C0133ACB1300DA1963 /* 9ine_iphone_bg_extend.png in Resources */ = {isa = PBXBuildFile; fileRef = E325E6BF133ACB1300DA1963 /* 9ine_iphone_bg_extend.png */; };
 		E325E6C2133ACB1B00DA1963 /* 9ine_iphone_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E325E6C1133ACB1B00DA1963 /* 9ine_iphone_bg.png */; };
 		E3D43C941343D028006B8935 /* UISc1mainButtons.png in Resources */ = {isa = PBXBuildFile; fileRef = E3D43C931343D028006B8935 /* UISc1mainButtons.png */; };
@@ -44,6 +45,7 @@
 		CD6FF2901345CF1F0037C173 /* OverviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewVC.h; sourceTree = "<group>"; };
 		CD6FF2911345CF1F0037C173 /* OverviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewVC.m; sourceTree = "<group>"; };
 		CD6FF2921345CF1F0037C173 /* OverviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewVC.xib; sourceTree = "<group>"; };
+		CDF5256E1346B15F00EAA598 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E325E6BF133ACB1300DA1963 /* 9ine_iphone_bg_extend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9ine_iphone_bg_extend.png; sourceTree = "<group>"; };
 		E325E6C1133ACB1B00DA1963 /* 9ine_iphone_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9ine_iphone_bg.png; sourceTree = "<group>"; };
 		E3D43C931343D028006B8935 /* UISc1mainButtons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISc1mainButtons.png; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF5256F1346B15F00EAA598 /* QuartzCore.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -85,6 +88,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				CDF5256E1346B15F00EAA598 /* QuartzCore.framework */,
 				CD6953B81345D32600CE271D /* StaticVCs_Prefix.pch */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -217,7 +221,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dominic Bannister Jr. (W2WFJT7SRD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -225,7 +229,7 @@
 				GCC_PREFIX_HEADER = Nine_Prefix.pch;
 				INFOPLIST_FILE = "Nine-Info.plist";
 				PRODUCT_NAME = Nine;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "72E36A85-F508-4654-AEBC-0CBF14FA5787";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
 		};
@@ -233,13 +237,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dominic Bannister Jr. (W2WFJT7SRD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Nine_Prefix.pch;
 				INFOPLIST_FILE = "Nine-Info.plist";
 				PRODUCT_NAME = Nine;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "72E36A85-F508-4654-AEBC-0CBF14FA5787";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -252,6 +256,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
@@ -265,6 +270,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;

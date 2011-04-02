@@ -8,13 +8,88 @@
 
 #import "OverviewVC.h"
 #import "NineAppDelegate.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @implementation OverviewVC;
 
 @synthesize bgScrollView;
+@synthesize recentEpisodeMiniView;
+@synthesize blogMiniView;
+@synthesize socialMiniView;
 
--(IBAction) switchToRecentEpisodeView {
+
+#pragma mark - Transition Methods
+-(void) scaleUpSubview:(UIView *)subview fadeToView:(UIView *)newView 
+{
+    float animationDuration = 0.5f;
+    //recentEpisodeMiniView.frame = CGRectMake(0.0f, 0.0f, 200.0f, 150.0f);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:animationDuration];
+    //recentEpisodeMiniView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 480.0f);
+    
+    CAKeyframeAnimation *moveToCenterAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+	
+	//CGFloat animationDuration = 0.5f;
+    
+	
+	CGMutablePathRef thePath = CGPathCreateMutable();
+	
+	CGFloat midX = self.view.center.x;
+	CGFloat midY = self.view.center.y;
+	
+	
+	// Start the path at the placard's current location
+	CGPathMoveToPoint(thePath, NULL, recentEpisodeMiniView.center.x, recentEpisodeMiniView.center.y);
+	CGPathAddLineToPoint(thePath, NULL, midX, midY);
+    
+    moveToCenterAnim.path = thePath;
+    
+	
+	CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+	transformAnimation.removedOnCompletion = YES;
+	transformAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    
+    recentEpisodeMiniView.center = self.view.center;
+	recentEpisodeMiniView.transform = CGAffineTransformIdentity;
+    
+    
+    float widthScale = (1.0 / recentEpisodeMiniView.frame.size.width) * self.view.frame.size.width;
+    float heightScale = (1.0 / recentEpisodeMiniView.frame.size.height) * self.view.frame.size.height;
+    
+    CGAffineTransform subToSuperScale = CGAffineTransformMakeScale(widthScale, heightScale);
+    recentEpisodeMiniView.transform = subToSuperScale;
+    
+    
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseOut];
+    [UIView commitAnimations];
+    
+    CGPathRelease(thePath);
+    
+    //[UIView setAnimationDidStopSelector:@selector(transitionToView: newView)];
+    [self performSelector: @selector(transitionToView:)
+               withObject: newView
+               afterDelay: animationDuration];
+
+}
+
+-(void) transitionToView: (UIView *)toView
+{
+    [UIView transitionFromView: self.view 
+                        toView: toView 
+                      duration: 0.5 
+                       options: UIViewAnimationTransitionNone
+                    completion: NULL];
+}
+
+-(IBAction) switchToRecentEpisodeView 
+{
+    NineAppDelegate* del = [[UIApplication sharedApplication] delegate];
+    [self scaleUpSubview: recentEpisodeMiniView fadeToView: del.recentEpisodeVC.view];
+}
+
+-(IBAction) switchToBlogView {
     NineAppDelegate* del = [[UIApplication sharedApplication] delegate];
     [UIView transitionFromView: self.view 
                         toView: del.recentEpisodeVC.view 
@@ -22,6 +97,17 @@
                        options: UIViewAnimationTransitionFlipFromLeft 
                     completion: NULL];
 }
+
+-(IBAction) switchToSocialView {
+    NineAppDelegate* del = [[UIApplication sharedApplication] delegate];
+    [UIView transitionFromView: self.view 
+                        toView: del.recentEpisodeVC.view 
+                      duration: 0.5 
+                       options: UIViewAnimationTransitionFlipFromLeft 
+                    completion: NULL];
+}
+
+
 
 - (CGSize)contentSizeForBGScrollView {
     // We have to use the paging scroll view's bounds to calculate the contentSize, for the same reason outlined above.
@@ -36,6 +122,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     }
     return self;
 }

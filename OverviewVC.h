@@ -11,13 +11,18 @@
 
 @interface OverviewVC : UIViewController <UIScrollViewDelegate> {
     IBOutlet UIScrollView *bgScrollView;
+    
+    IBOutlet UIView *recentEpisodeMiniView;
+    IBOutlet UIView *blogMiniView;
+    IBOutlet UIView *socialMiniView;
 }
 
 
 @property (nonatomic, retain) IBOutlet UIScrollView *bgScrollView;
+@property (nonatomic, retain) IBOutlet UIView *recentEpisodeMiniView;
+@property (nonatomic, retain) IBOutlet UIView *blogMiniView;
+@property (nonatomic, retain) IBOutlet UIView *socialMiniView;
 
-
-//@property (nonatomic, retain) IBAction UIButton *featureScreenAButton;
 
 -(IBAction) switchToRecentEpisodeView;
 
