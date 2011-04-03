@@ -10,27 +10,106 @@
 
 @implementation NineAppDelegate
 
+@synthesize ghettoGlobals;
 @synthesize window;
 @synthesize overviewVC;
 @synthesize recentEpisodeVC;
-
-@synthesize ghettoGlobals;
+@synthesize fadeAnimDur;
 
 
 #pragma mark -
-#pragma mark State Transition Methods
--(void) fadeFromView:(UIView*)fromView toView:(UIView*)toView
+#pragma mark Fake Constants
+-(float) fadeAnimDur { return 0.5; }
+
+
+#pragma mark -
+#pragma mark Utility
+-(void) assignTagsToSubviews:(UIView*)view
 {
+    int i = 0;
+    for (UIView *subview in view.subviews) {
+        subview.tag = i;
+        i++;
+    }
+}
+
+-(void) enableUserInteractionForView:(UIView *)view
+{
+    view.userInteractionEnabled = YES;
+}
+
+-(void) disableGlobalUserInteraction
+{
+    window.userInteractionEnabled = NO;
+}
+
+-(void) enableGlobalUserInteraction
+{
+    window.userInteractionEnabled = YES;
+}
+
+#pragma mark -
+#pragma mark State Transition Methods
+-(void) fadeFromView:(UIView*)fromView toViewControlledBy:(UIViewController*)toViewVC fromViewOnTop:(BOOL)fromViewOnTop
+{
+    NSLog(@"NineAppDelegate fadeFromView");
+    //if ([[toViewVC class] instancesRespondToSelector:@selector(preloadSetup)] == YES) {
+    if ([toViewVC  respondsToSelector:@selector(preloadSetup)] == YES) {    
+        NSLog(@"NineAppDelegate fadeFromView toView responded to selector preloadSetup");
+        NSMethodSignature * mySignature = 
+        [toViewVC methodSignatureForSelector:@selector(preloadSetup)];
+        
+        NSInvocation * myInvocation = 
+        [NSInvocation invocationWithMethodSignature:mySignature];
+        
+        [myInvocation setTarget:toViewVC];
+        [myInvocation setSelector:@selector(preloadSetup)];
+        
+        [self fadeFromView:fromView toView:toViewVC.view afterInvoking:myInvocation fromViewOnTop:fromViewOnTop];
+    } else {
+        [self fadeFromView:fromView toView:toViewVC.view afterInvoking:nil fromViewOnTop:fromViewOnTop];
+    }
+}
+
+-(void) fadeFromView:(UIView*)fromView toView:(UIView*)toView fromViewOnTop:(BOOL)fromViewOnTop
+{
+    [self fadeFromView:fromView toView:toView afterInvoking:nil fromViewOnTop:fromViewOnTop];
+}
+
+-(void) fadeFromView:(UIView*)fromView toView:(UIView*)toView afterInvoking:(NSInvocation *)invokation fromViewOnTop:(BOOL)fromViewOnTop
+{
+    fromView.userInteractionEnabled = NO;
+    toView.userInteractionEnabled = NO;
+    [self disableGlobalUserInteraction];
+    
     toView.alpha = 0.0f;
     [window addSubview:toView];
+    toView.userInteractionEnabled = NO;
     
-    float animationDuration = 0.5f;
-    [UIView beginAnimations: nil context:NULL];
+    if (fromViewOnTop) {
+        [window bringSubviewToFront:fromView];
+        fromView.userInteractionEnabled = NO;
+        toView.alpha = 1.0f;
+    } 
+    
+    if (invokation != nil) {
+        NSLog(@"\ninvokation invoke\n");
+        [invokation invoke];
+    }
+        
+    [UIView beginAnimations:@"FadeToNewView" context:NULL];
     [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationDuration:self.fadeAnimDur];
     
-    toView.alpha = 1.0f;
+    if (fromViewOnTop) {
+        fromView.alpha = 0.0f;
+    } else {
+        toView.alpha = 1.0;
+    }
+    
     [UIView commitAnimations];
+    fromView.userInteractionEnabled = NO;
+    
     
     NSMethodSignature * mySignature = 
     [UIView methodSignatureForSelector:
@@ -38,18 +117,22 @@
     NSInvocation * myInvocation = 
     [NSInvocation invocationWithMethodSignature:mySignature];
     
-    NSNumber * zero = [NSNumber numberWithFloat:0.0f];
     UIViewAnimationOptions options = UIViewAnimationTransitionNone;
+    float transDur = self.fadeAnimDur;
+    float delayDur = 0.0;
     
     [myInvocation setTarget:[UIView class]];
     [myInvocation setSelector:@selector(transitionFromView:toView:duration:options:completion:)];
     [myInvocation setArgument:&fromView atIndex:2];
     [myInvocation setArgument:&toView atIndex:3];
-    [myInvocation setArgument:&zero atIndex:4];
+    [myInvocation setArgument:&delayDur atIndex:4];
     [myInvocation setArgument:&options atIndex:5];
     
-    [myInvocation performSelector:@selector(invoke) withObject:nil afterDelay:animationDuration];
+    [myInvocation performSelector:@selector(invoke) withObject:nil afterDelay:transDur];
     
+    float totalTransDur = self.fadeAnimDur + transDur;
+    [self performSelector:@selector(enableUserInteractionForView:) withObject:toView afterDelay:totalTransDur];
+    [self performSelector:@selector(enableGlobalUserInteraction) withObject:nil afterDelay:totalTransDur];
     
     //toVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     //[self presentModalViewController:toVC animated:YES];
@@ -157,6 +240,7 @@
 
 
 - (void)dealloc {
+    [ghettoGlobals release];
     [window release];
     [overviewVC release];
     [recentEpisodeVC release];

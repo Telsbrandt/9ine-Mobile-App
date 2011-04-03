@@ -14,13 +14,17 @@
 
 @synthesize tableView;
 
--(IBAction) switchToOverview {
+-(IBAction) switchToOverview 
+{
     NineAppDelegate* del = [[UIApplication sharedApplication] delegate];
-    [UIView transitionFromView: self.view 
+    [del fadeFromView:self.view toViewControlledBy:del.overviewVC fromViewOnTop:YES];
+     
+    /*[UIView transitionFromView: self.view 
                         toView: del.overviewVC.view 
                       duration: 0.5 
                        options: UIViewAnimationTransitionFlipFromLeft 
-                    completion: NULL];
+                    completion: NULL];*/
+    
 }
 
 static NSUInteger KNumberofRows = 3;

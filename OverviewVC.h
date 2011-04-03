@@ -18,6 +18,8 @@
     
     CGPoint lastSubviewCenter;
     CGPoint lastContentOffset;
+    
+    float scaleAnimDur;
 }
 
 
@@ -26,9 +28,12 @@
 @property (nonatomic, retain) IBOutlet UIView *blogMiniView;
 @property (nonatomic, retain) IBOutlet UIView *socialMiniView;
 
+@property (readonly) float scaleAnimDur;
+
+
+-(void) preloadSetup;
 
 -(IBAction) switchToRecentEpisodeView;
-
 
 
 @end
